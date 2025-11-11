@@ -2,7 +2,6 @@ package pe.edu.smartspace.securities;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.Keys;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -72,7 +71,7 @@ public class JwtTokenUtil {
                 .setSubject(subject) // aquí va el username
                 .setIssuedAt(new Date(System.currentTimeMillis()))
                 .setExpiration(new Date(System.currentTimeMillis() + JWT_TOKEN_VALIDITY * 1000))
-                .signWith(getSignInKey(), SignatureAlgorithm.HS512)
+                .signWith(getSignInKey())
                 .compact();
     }
 
